@@ -1,4 +1,8 @@
-# Image Encoding + Linear SVM Benchmark (timm backbones)
+# SolClean: Advancing Backbone Architecture Search for Data-Driven Deep Learning in Sustainable Solar Panel Maintenance via Image-Based Dust Detection
+
+<p align="center">
+  <img src="asset/block.png" alt="SolClean Block Diagram" width="720">
+</p>
 
 A compact pipeline to:
 1) **Encode** images using a curated list of pre-trained backbones from **timm** (with `alexnet` from torchvision only), and  
@@ -23,17 +27,18 @@ Everything is driven through a single **`config.yaml`** and a one-shot **`main.p
 
 ```
 .
-├── config.yaml            # Paths, runtime, and model list
-├── encode.py              # Feature extraction (timm + torchvision alexnet)
-├── classify.py            # Linear SVM CV and (optional) final model saving
-├── main.py                # Single entrypoint to run encode → classify
-├── README.md              # This file
-└── .gitignore             # Ignore cache, artifacts, etc.
+├── asset/ # images for README
+│   └── block.png
+├── classify.py # Linear SVM CV and (optional) final model saving
+├── config.yaml # Paths, runtime, and model list
+├── encode.py # Feature extraction (timm + torchvision alexnet)
+├── main.py # Single entrypoint to run encode → classify
+└── README.md # This file
+
 ```
 
-> If you keep your dataset on Google Drive (recommended), link it here:
->
-> **Dataset (Google Drive):** https://drive.google.com/YOUR-DATASET-LINK  
+> **Main Dataset (Google Drive):** https://drive.google.com/file/d/1b8rcGBcd71clYMl15y_c5Txwlsvpzyv8/view?usp=sharing
+> 
 > After download, extract as:
 >
 > ```
@@ -47,6 +52,7 @@ Everything is driven through a single **`config.yaml`** and a one-shot **`main.p
 > ```
 > Update `dataset_dir` in `config.yaml` accordingly.
 
+> **Unseen Test Dataset (Google Drive):** https://drive.google.com/file/d/1H4Drx8kcuHe9DEMnk_rpGDjuogKOTfjW/view?usp=sharing
 ---
 
 ## 🔧 Requirements
@@ -74,8 +80,6 @@ PyYAML
 joblib
 openpyxl
 ```
-
-> If you don’t want a `requirements.txt`, just copy the list into `pip install ...`.
 
 ---
 
@@ -258,8 +262,4 @@ python main.py --config config.yaml --classify-only
 - The SVM CV uses `random_state` from `config.yaml`.
 - Encodings are deterministic for pretrained inference.
 
----
 
-## 📄 License
-
-Add your preferred license (e.g., MIT) to the repo.
